@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Recognition and GPT Interaction</title>
+</head>
+<body>
+    <h1>Speech Recognition and GPT Interaction</h1>
+
+    <h2>Speech Recognition</h2>
+    <form action="/recognize_speech" method="POST" enctype="multipart/form-data">
+        <input type="file" name="audio" accept="audio/*">
+        <input type="submit" value="Recognize Speech">
+    </form>
+    <div id="recognized_text">
+        {% if recognized_text %}
+        <p><strong>Recognized Text:</strong> {{ recognized_text }}</p>
+        {% endif %}
+    </div>
+
+    <h2>GPT Response</h2>
+    <form action="/get_gpt_response" method="POST">
+        <textarea name="prompt" placeholder="Enter a prompt"></textarea><br>
+        <label for="language_code">Language Code:</label>
+        <select name="language_code" id="language_code">
+            <option value="en-US">English</option>
+            <option value="he-IL">Hebrew</option>
+        </select><br>
+        <input type="submit" value="Get GPT Response">
+    </form>
+    <div id="gpt_response">
+        {% if gpt_response %}
+        <p><strong>GPT Response:</strong> {{ gpt_response }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
